@@ -1,0 +1,1235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IntensFitModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="IntensFitEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="IntensFitModel.sysdiagram" />
+    <EntitySet Name="ApprovalStates" EntityType="IntensFitModel.ApprovalState" />
+    <EntitySet Name="Backgrounds" EntityType="IntensFitModel.Background" />
+    <EntitySet Name="Contents" EntityType="IntensFitModel.Content" />
+    <EntitySet Name="ContentTypes" EntityType="IntensFitModel.ContentType" />
+    <EntitySet Name="Groups" EntityType="IntensFitModel.Group" />
+    <EntitySet Name="GroupUsers" EntityType="IntensFitModel.GroupUser" />
+    <EntitySet Name="Messages" EntityType="IntensFitModel.Message" />
+    <EntitySet Name="MessageTypes" EntityType="IntensFitModel.MessageType" />
+    <EntitySet Name="Answers" EntityType="IntensFitModel.Answer" />
+    <EntitySet Name="AnswerLists" EntityType="IntensFitModel.AnswerList" />
+    <EntitySet Name="AnswerListItems" EntityType="IntensFitModel.AnswerListItem" />
+    <EntitySet Name="Clients" EntityType="IntensFitModel.Client" />
+    <EntitySet Name="ClientTypes" EntityType="IntensFitModel.ClientType" />
+    <EntitySet Name="Documents" EntityType="IntensFitModel.Document" />
+    <EntitySet Name="DocumentTypes" EntityType="IntensFitModel.DocumentType" />
+    <EntitySet Name="EmploymentTypes" EntityType="IntensFitModel.EmploymentType" />
+    <EntitySet Name="Questions" EntityType="IntensFitModel.Question" />
+    <EntitySet Name="Coaches" EntityType="IntensFitModel.Coach" />
+    <EntitySet Name="CoachTypes" EntityType="IntensFitModel.CoachType" />
+    <EntitySet Name="Countries" EntityType="IntensFitModel.Country" />
+    <EntitySet Name="Genders" EntityType="IntensFitModel.Gender" />
+    <EntitySet Name="TimeZones" EntityType="IntensFitModel.TimeZone" />
+    <EntitySet Name="Users" EntityType="IntensFitModel.User" />
+    <EntitySet Name="UserPhotoes" EntityType="IntensFitModel.UserPhoto" />
+    <EntitySet Name="Logs" EntityType="IntensFitModel.Log" />
+    <EntitySet Name="NLogs" EntityType="IntensFitModel.NLog" />
+    <EntitySet Name="TestTables" EntityType="IntensFitModel.TestTable" />
+    <EntitySet Name="vw_TEMP_groups" EntityType="IntensFitModel.vw_TEMP_groups" />
+    <EntitySet Name="vw_User" EntityType="IntensFitModel.vw_User" />
+    <EntitySet Name="vw_UserPhoto" EntityType="IntensFitModel.vw_UserPhoto" />
+    <EntitySet Name="database_firewall_rules" EntityType="IntensFitModel.database_firewall_rules" />
+    <AssociationSet Name="FK_Message_ApprovalState" Association="IntensFitModel.FK_Message_ApprovalState">
+      <End Role="ApprovalState" EntitySet="ApprovalStates" />
+      <End Role="Message" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Group_Background" Association="IntensFitModel.FK_Group_Background">
+      <End Role="Background" EntitySet="Backgrounds" />
+      <End Role="Group" EntitySet="Groups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Content_ContentType" Association="IntensFitModel.FK_Content_ContentType">
+      <End Role="ContentType" EntitySet="ContentTypes" />
+      <End Role="Content" EntitySet="Contents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Content_Message" Association="IntensFitModel.FK_Content_Message">
+      <End Role="Message" EntitySet="Messages" />
+      <End Role="Content" EntitySet="Contents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Group_User" Association="IntensFitModel.FK_Group_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Group" EntitySet="Groups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GroupUser_Group" Association="IntensFitModel.FK_GroupUser_Group">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="GroupUser" EntitySet="GroupUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GroupUser_User" Association="IntensFitModel.FK_GroupUser_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="GroupUser" EntitySet="GroupUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GroupUser_User_addedById" Association="IntensFitModel.FK_GroupUser_User_addedById">
+      <End Role="User" EntitySet="Users" />
+      <End Role="GroupUser" EntitySet="GroupUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_GroupUser" Association="IntensFitModel.FK_Message_GroupUser">
+      <End Role="GroupUser" EntitySet="GroupUsers" />
+      <End Role="Message" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_GroupUser_approvalStateById" Association="IntensFitModel.FK_Message_GroupUser_approvalStateById">
+      <End Role="GroupUser" EntitySet="GroupUsers" />
+      <End Role="Message" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_MessageType" Association="IntensFitModel.FK_Message_MessageType">
+      <End Role="MessageType" EntitySet="MessageTypes" />
+      <End Role="Message" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_AnswerListItem" Association="IntensFitModel.FK_Answer_AnswerListItem">
+      <End Role="AnswerListItem" EntitySet="AnswerListItems" />
+      <End Role="Answer" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_Client" Association="IntensFitModel.FK_Answer_Client">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Answer" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_Question" Association="IntensFitModel.FK_Answer_Question">
+      <End Role="Question" EntitySet="Questions" />
+      <End Role="Answer" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AnswerList_User" Association="IntensFitModel.FK_AnswerList_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="AnswerList" EntitySet="AnswerLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AnswerList_User_modifiedBy" Association="IntensFitModel.FK_AnswerList_User_modifiedBy">
+      <End Role="User" EntitySet="Users" />
+      <End Role="AnswerList" EntitySet="AnswerLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AnswerListItem_AnswerList" Association="IntensFitModel.FK_AnswerListItem_AnswerList">
+      <End Role="AnswerList" EntitySet="AnswerLists" />
+      <End Role="AnswerListItem" EntitySet="AnswerListItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_AnswerList" Association="IntensFitModel.FK_Question_AnswerList">
+      <End Role="AnswerList" EntitySet="AnswerLists" />
+      <End Role="Question" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AnswerListItem_User" Association="IntensFitModel.FK_AnswerListItem_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="AnswerListItem" EntitySet="AnswerListItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AnswerListItem_User_modifiedBy" Association="IntensFitModel.FK_AnswerListItem_User_modifiedBy">
+      <End Role="User" EntitySet="Users" />
+      <End Role="AnswerListItem" EntitySet="AnswerListItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_ClientType" Association="IntensFitModel.FK_Client_ClientType">
+      <End Role="ClientType" EntitySet="ClientTypes" />
+      <End Role="Client" EntitySet="Clients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_Country" Association="IntensFitModel.FK_Client_Country">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="Client" EntitySet="Clients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_EmploymentType" Association="IntensFitModel.FK_Client_EmploymentType">
+      <End Role="EmploymentType" EntitySet="EmploymentTypes" />
+      <End Role="Client" EntitySet="Clients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_TimeZone" Association="IntensFitModel.FK_Client_TimeZone">
+      <End Role="TimeZone" EntitySet="TimeZones" />
+      <End Role="Client" EntitySet="Clients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_User" Association="IntensFitModel.FK_Client_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Client" EntitySet="Clients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_User_createdBy" Association="IntensFitModel.FK_Client_User_createdBy">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Client" EntitySet="Clients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_User_modifiedBy" Association="IntensFitModel.FK_Client_User_modifiedBy">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Client" EntitySet="Clients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Document_Client" Association="IntensFitModel.FK_Document_Client">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Document" EntitySet="Documents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Document_DocumentType" Association="IntensFitModel.FK_Document_DocumentType">
+      <End Role="DocumentType" EntitySet="DocumentTypes" />
+      <End Role="Document" EntitySet="Documents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Document_User_createdBy" Association="IntensFitModel.FK_Document_User_createdBy">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Document" EntitySet="Documents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Document_User_modifiedBy" Association="IntensFitModel.FK_Document_User_modifiedBy">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Document" EntitySet="Documents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_User" Association="IntensFitModel.FK_Question_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Question" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_User_modifiedBy" Association="IntensFitModel.FK_Question_User_modifiedBy">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Question" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Coach_CoachType" Association="IntensFitModel.FK_Coach_CoachType">
+      <End Role="CoachType" EntitySet="CoachTypes" />
+      <End Role="Coach" EntitySet="Coaches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Coach_User" Association="IntensFitModel.FK_Coach_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Coach" EntitySet="Coaches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Coach_User_createdBy" Association="IntensFitModel.FK_Coach_User_createdBy">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Coach" EntitySet="Coaches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Coach_User_modifiedBy" Association="IntensFitModel.FK_Coach_User_modifiedBy">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Coach" EntitySet="Coaches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Gender" Association="IntensFitModel.FK_User_Gender">
+      <End Role="Gender" EntitySet="Genders" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_User" Association="IntensFitModel.FK_User_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="User1" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserPhoto_User" Association="IntensFitModel.FK_UserPhoto_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserPhoto" EntitySet="UserPhotoes" />
+    </AssociationSet>
+    <FunctionImport Name="proc_AddGroup">
+      <Parameter Name="i_name" Mode="In" Type="String" />
+      <Parameter Name="i_createdById" Mode="In" Type="Int32" />
+      <Parameter Name="i_backgroundId" Mode="In" Type="Int16" />
+      <Parameter Name="o_chatId" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_AddMessage">
+      <Parameter Name="i_id" Mode="In" Type="Guid" />
+      <Parameter Name="i_groupUserId" Mode="In" Type="Int32" />
+      <Parameter Name="i_createdOn" Mode="In" Type="DateTime" />
+      <Parameter Name="i_typeId" Mode="In" Type="Int16" />
+      <Parameter Name="i_approvalStateId" Mode="In" Type="Byte" />
+      <Parameter Name="i_approvalStateOn" Mode="In" Type="DateTime" />
+      <Parameter Name="i_approvalStateById" Mode="In" Type="Int32" />
+      <Parameter Name="i_text" Mode="In" Type="String" />
+      <Parameter Name="i_contentTypeId" Mode="In" Type="Int16" />
+      <Parameter Name="i_contentData" Mode="In" Type="Binary" />
+      <Parameter Name="i_contentDataCompressed" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="proc_GetUserGroups">
+      <Parameter Name="i_userCellphone" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_TestTable" ReturnType="Collection(IntensFitModel.proc_TestTable_Result)">
+      <Parameter Name="i_value" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(IntensFitModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(IntensFitModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="proc_AddLog">
+      <Parameter Name="machineName" Mode="In" Type="String" />
+      <Parameter Name="siteName" Mode="In" Type="String" />
+      <Parameter Name="logged" Mode="In" Type="DateTime" />
+      <Parameter Name="level" Mode="In" Type="String" />
+      <Parameter Name="userName" Mode="In" Type="String" />
+      <Parameter Name="message" Mode="In" Type="String" />
+      <Parameter Name="logger" Mode="In" Type="String" />
+      <Parameter Name="properties" Mode="In" Type="String" />
+      <Parameter Name="serverName" Mode="In" Type="String" />
+      <Parameter Name="port" Mode="In" Type="String" />
+      <Parameter Name="url" Mode="In" Type="String" />
+      <Parameter Name="https" Mode="In" Type="Boolean" />
+      <Parameter Name="serverAddress" Mode="In" Type="String" />
+      <Parameter Name="remoteAddress" Mode="In" Type="String" />
+      <Parameter Name="callSite" Mode="In" Type="String" />
+      <Parameter Name="exception" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ApprovalState">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Messages" Relationship="IntensFitModel.FK_Message_ApprovalState" FromRole="ApprovalState" ToRole="Message" />
+  </EntityType>
+  <EntityType Name="Background">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="background1" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Groups" Relationship="IntensFitModel.FK_Group_Background" FromRole="Background" ToRole="Group" />
+  </EntityType>
+  <EntityType Name="Content">
+    <Key>
+      <PropertyRef Name="messageId" />
+    </Key>
+    <Property Name="messageId" Type="Guid" Nullable="false" />
+    <Property Name="typeId" Type="Int16" Nullable="false" />
+    <Property Name="data" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="ContentType" Relationship="IntensFitModel.FK_Content_ContentType" FromRole="Content" ToRole="ContentType" />
+    <NavigationProperty Name="Message" Relationship="IntensFitModel.FK_Content_Message" FromRole="Content" ToRole="Message" />
+    <Property Name="dataCompressed" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ContentType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Contents" Relationship="IntensFitModel.FK_Content_ContentType" FromRole="ContentType" ToRole="Content" />
+  </EntityType>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="createdOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="createdById" Type="Int32" Nullable="false" />
+    <Property Name="backgroundId" Type="Int16" />
+    <NavigationProperty Name="Background" Relationship="IntensFitModel.FK_Group_Background" FromRole="Group" ToRole="Background" />
+    <NavigationProperty Name="User" Relationship="IntensFitModel.FK_Group_User" FromRole="Group" ToRole="User" />
+    <NavigationProperty Name="GroupUsers" Relationship="IntensFitModel.FK_GroupUser_Group" FromRole="Group" ToRole="GroupUser" />
+  </EntityType>
+  <EntityType Name="GroupUser">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="groupId" Type="Int32" Nullable="false" />
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="isAdmin" Type="Boolean" Nullable="false" />
+    <Property Name="lastSeenOn" Type="DateTime" Precision="3" />
+    <Property Name="addedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="addedById" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Group" Relationship="IntensFitModel.FK_GroupUser_Group" FromRole="GroupUser" ToRole="Group" />
+    <NavigationProperty Name="User" Relationship="IntensFitModel.FK_GroupUser_User" FromRole="GroupUser" ToRole="User" />
+    <NavigationProperty Name="User1" Relationship="IntensFitModel.FK_GroupUser_User_addedById" FromRole="GroupUser" ToRole="User" />
+    <NavigationProperty Name="Messages" Relationship="IntensFitModel.FK_Message_GroupUser" FromRole="GroupUser" ToRole="Message" />
+    <NavigationProperty Name="Messages1" Relationship="IntensFitModel.FK_Message_GroupUser_approvalStateById" FromRole="GroupUser" ToRole="Message" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="groupUserId" Type="Int32" Nullable="false" />
+    <Property Name="createdOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="typeId" Type="Int16" Nullable="false" />
+    <Property Name="approvalStateId" Type="Byte" />
+    <Property Name="approvalStateOn" Type="DateTime" Precision="3" />
+    <Property Name="approvalStateById" Type="Int32" />
+    <Property Name="text" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ApprovalState" Relationship="IntensFitModel.FK_Message_ApprovalState" FromRole="Message" ToRole="ApprovalState" />
+    <NavigationProperty Name="Content" Relationship="IntensFitModel.FK_Content_Message" FromRole="Message" ToRole="Content" />
+    <NavigationProperty Name="GroupUser" Relationship="IntensFitModel.FK_Message_GroupUser" FromRole="Message" ToRole="GroupUser" />
+    <NavigationProperty Name="GroupUser1" Relationship="IntensFitModel.FK_Message_GroupUser_approvalStateById" FromRole="Message" ToRole="GroupUser" />
+    <NavigationProperty Name="MessageType" Relationship="IntensFitModel.FK_Message_MessageType" FromRole="Message" ToRole="MessageType" />
+  </EntityType>
+  <EntityType Name="MessageType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Messages" Relationship="IntensFitModel.FK_Message_MessageType" FromRole="MessageType" ToRole="Message" />
+  </EntityType>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="questionaryId" Type="Int32" Nullable="false" />
+    <Property Name="questionId" Type="Int32" Nullable="false" />
+    <Property Name="answerListItemId" Type="Int32" />
+    <Property Name="text" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="clientId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AnswerListItem" Relationship="IntensFitModel.FK_Answer_AnswerListItem" FromRole="Answer" ToRole="AnswerListItem" />
+    <NavigationProperty Name="Client" Relationship="IntensFitModel.FK_Answer_Client" FromRole="Answer" ToRole="Client" />
+    <NavigationProperty Name="Question" Relationship="IntensFitModel.FK_Answer_Question" FromRole="Answer" ToRole="Question" />
+  </EntityType>
+  <EntityType Name="AnswerList">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="createdOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="createdBy" Type="Int32" Nullable="false" />
+    <Property Name="modifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modifiedBy" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="IntensFitModel.FK_AnswerList_User" FromRole="AnswerList" ToRole="User" />
+    <NavigationProperty Name="User1" Relationship="IntensFitModel.FK_AnswerList_User_modifiedBy" FromRole="AnswerList" ToRole="User" />
+    <NavigationProperty Name="AnswerListItems" Relationship="IntensFitModel.FK_AnswerListItem_AnswerList" FromRole="AnswerList" ToRole="AnswerListItem" />
+    <NavigationProperty Name="Questions" Relationship="IntensFitModel.FK_Question_AnswerList" FromRole="AnswerList" ToRole="Question" />
+  </EntityType>
+  <EntityType Name="AnswerListItem">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="createdOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="createdBy" Type="Int32" Nullable="false" />
+    <Property Name="modifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modifiedBy" Type="Int32" Nullable="false" />
+    <Property Name="answerListId" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Answers" Relationship="IntensFitModel.FK_Answer_AnswerListItem" FromRole="AnswerListItem" ToRole="Answer" />
+    <NavigationProperty Name="AnswerList" Relationship="IntensFitModel.FK_AnswerListItem_AnswerList" FromRole="AnswerListItem" ToRole="AnswerList" />
+    <NavigationProperty Name="User" Relationship="IntensFitModel.FK_AnswerListItem_User" FromRole="AnswerListItem" ToRole="User" />
+    <NavigationProperty Name="User1" Relationship="IntensFitModel.FK_AnswerListItem_User_modifiedBy" FromRole="AnswerListItem" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="createdOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="createdBy" Type="Int32" Nullable="false" />
+    <Property Name="modifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modifiedBy" Type="Int32" Nullable="false" />
+    <Property Name="typeId" Type="Byte" Nullable="false" />
+    <Property Name="timeZoneId" Type="Int16" Nullable="false" />
+    <Property Name="countryId" Type="Int16" Nullable="false" />
+    <Property Name="city" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="height" Type="Byte" Nullable="false" />
+    <Property Name="weight" Type="Byte" Nullable="false" />
+    <Property Name="artPresSystolic" Type="Byte" Nullable="false" />
+    <Property Name="artPresDiastolic" Type="Byte" Nullable="false" />
+    <Property Name="bloodGroup" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="rhFactor" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="wakeUpTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="sleepTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="employmentTypeId" Type="Byte" Nullable="false" />
+    <Property Name="employmentFrom" Type="Time" Precision="7" />
+    <Property Name="employmentTill" Type="Time" Precision="7" />
+    <NavigationProperty Name="Answers" Relationship="IntensFitModel.FK_Answer_Client" FromRole="Client" ToRole="Answer" />
+    <NavigationProperty Name="ClientType" Relationship="IntensFitModel.FK_Client_ClientType" FromRole="Client" ToRole="ClientType" />
+    <NavigationProperty Name="Country" Relationship="IntensFitModel.FK_Client_Country" FromRole="Client" ToRole="Country" />
+    <NavigationProperty Name="EmploymentType" Relationship="IntensFitModel.FK_Client_EmploymentType" FromRole="Client" ToRole="EmploymentType" />
+    <NavigationProperty Name="TimeZone" Relationship="IntensFitModel.FK_Client_TimeZone" FromRole="Client" ToRole="TimeZone" />
+    <NavigationProperty Name="User" Relationship="IntensFitModel.FK_Client_User" FromRole="Client" ToRole="User" />
+    <NavigationProperty Name="User1" Relationship="IntensFitModel.FK_Client_User_createdBy" FromRole="Client" ToRole="User" />
+    <NavigationProperty Name="User2" Relationship="IntensFitModel.FK_Client_User_modifiedBy" FromRole="Client" ToRole="User" />
+    <NavigationProperty Name="Documents" Relationship="IntensFitModel.FK_Document_Client" FromRole="Client" ToRole="Document" />
+  </EntityType>
+  <EntityType Name="ClientType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Clients" Relationship="IntensFitModel.FK_Client_ClientType" FromRole="ClientType" ToRole="Client" />
+  </EntityType>
+  <EntityType Name="Document">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="createdOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="createdBy" Type="Int32" Nullable="false" />
+    <Property Name="modifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modifiedBy" Type="Int32" Nullable="false" />
+    <Property Name="clientId" Type="Int32" Nullable="false" />
+    <Property Name="typeId" Type="Int16" Nullable="false" />
+    <Property Name="content" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Client" Relationship="IntensFitModel.FK_Document_Client" FromRole="Document" ToRole="Client" />
+    <NavigationProperty Name="DocumentType" Relationship="IntensFitModel.FK_Document_DocumentType" FromRole="Document" ToRole="DocumentType" />
+    <NavigationProperty Name="User" Relationship="IntensFitModel.FK_Document_User_createdBy" FromRole="Document" ToRole="User" />
+    <NavigationProperty Name="User1" Relationship="IntensFitModel.FK_Document_User_modifiedBy" FromRole="Document" ToRole="User" />
+  </EntityType>
+  <EntityType Name="DocumentType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Documents" Relationship="IntensFitModel.FK_Document_DocumentType" FromRole="DocumentType" ToRole="Document" />
+  </EntityType>
+  <EntityType Name="EmploymentType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Clients" Relationship="IntensFitModel.FK_Client_EmploymentType" FromRole="EmploymentType" ToRole="Client" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="createdOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="createdBy" Type="Int32" Nullable="false" />
+    <Property Name="modifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modifiedBy" Type="Int32" Nullable="false" />
+    <Property Name="orderId" Type="Int32" Nullable="false" />
+    <Property Name="text" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="answerListId" Type="Int32" />
+    <NavigationProperty Name="Answers" Relationship="IntensFitModel.FK_Answer_Question" FromRole="Question" ToRole="Answer" />
+    <NavigationProperty Name="AnswerList" Relationship="IntensFitModel.FK_Question_AnswerList" FromRole="Question" ToRole="AnswerList" />
+    <NavigationProperty Name="User" Relationship="IntensFitModel.FK_Question_User" FromRole="Question" ToRole="User" />
+    <NavigationProperty Name="User1" Relationship="IntensFitModel.FK_Question_User_modifiedBy" FromRole="Question" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Coach">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="createdOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="createdBy" Type="Int32" Nullable="false" />
+    <Property Name="modifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modifiedBy" Type="Int32" Nullable="false" />
+    <Property Name="typeId" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="CoachType" Relationship="IntensFitModel.FK_Coach_CoachType" FromRole="Coach" ToRole="CoachType" />
+    <NavigationProperty Name="User" Relationship="IntensFitModel.FK_Coach_User" FromRole="Coach" ToRole="User" />
+    <NavigationProperty Name="User1" Relationship="IntensFitModel.FK_Coach_User_createdBy" FromRole="Coach" ToRole="User" />
+    <NavigationProperty Name="User2" Relationship="IntensFitModel.FK_Coach_User_modifiedBy" FromRole="Coach" ToRole="User" />
+  </EntityType>
+  <EntityType Name="CoachType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Coaches" Relationship="IntensFitModel.FK_Coach_CoachType" FromRole="CoachType" ToRole="Coach" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Clients" Relationship="IntensFitModel.FK_Client_Country" FromRole="Country" ToRole="Client" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Users" Relationship="IntensFitModel.FK_User_Gender" FromRole="Gender" ToRole="User" />
+  </EntityType>
+  <EntityType Name="TimeZone">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="value" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Clients" Relationship="IntensFitModel.FK_Client_TimeZone" FromRole="TimeZone" ToRole="Client" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="createdOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="createdById" Type="Int32" Nullable="false" />
+    <Property Name="modifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modifiedById" Type="Int32" Nullable="false" />
+    <Property Name="cellphone" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="false" />
+    <Property Name="genderId" Type="Byte" Nullable="false" />
+    <Property Name="firstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="fatherName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="lastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="birthday" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="skype" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="isOnline" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Groups" Relationship="IntensFitModel.FK_Group_User" FromRole="User" ToRole="Group" />
+    <NavigationProperty Name="GroupUsers" Relationship="IntensFitModel.FK_GroupUser_User" FromRole="User" ToRole="GroupUser" />
+    <NavigationProperty Name="GroupUsers1" Relationship="IntensFitModel.FK_GroupUser_User_addedById" FromRole="User" ToRole="GroupUser" />
+    <NavigationProperty Name="AnswerLists" Relationship="IntensFitModel.FK_AnswerList_User" FromRole="User" ToRole="AnswerList" />
+    <NavigationProperty Name="AnswerLists1" Relationship="IntensFitModel.FK_AnswerList_User_modifiedBy" FromRole="User" ToRole="AnswerList" />
+    <NavigationProperty Name="AnswerListItems" Relationship="IntensFitModel.FK_AnswerListItem_User" FromRole="User" ToRole="AnswerListItem" />
+    <NavigationProperty Name="AnswerListItems1" Relationship="IntensFitModel.FK_AnswerListItem_User_modifiedBy" FromRole="User" ToRole="AnswerListItem" />
+    <NavigationProperty Name="Client" Relationship="IntensFitModel.FK_Client_User" FromRole="User" ToRole="Client" />
+    <NavigationProperty Name="Clients" Relationship="IntensFitModel.FK_Client_User_createdBy" FromRole="User" ToRole="Client" />
+    <NavigationProperty Name="Clients1" Relationship="IntensFitModel.FK_Client_User_modifiedBy" FromRole="User" ToRole="Client" />
+    <NavigationProperty Name="Documents" Relationship="IntensFitModel.FK_Document_User_createdBy" FromRole="User" ToRole="Document" />
+    <NavigationProperty Name="Documents1" Relationship="IntensFitModel.FK_Document_User_modifiedBy" FromRole="User" ToRole="Document" />
+    <NavigationProperty Name="Questions" Relationship="IntensFitModel.FK_Question_User" FromRole="User" ToRole="Question" />
+    <NavigationProperty Name="Questions1" Relationship="IntensFitModel.FK_Question_User_modifiedBy" FromRole="User" ToRole="Question" />
+    <NavigationProperty Name="Coach" Relationship="IntensFitModel.FK_Coach_User" FromRole="User" ToRole="Coach" />
+    <NavigationProperty Name="Coaches" Relationship="IntensFitModel.FK_Coach_User_createdBy" FromRole="User" ToRole="Coach" />
+    <NavigationProperty Name="Coaches1" Relationship="IntensFitModel.FK_Coach_User_modifiedBy" FromRole="User" ToRole="Coach" />
+    <NavigationProperty Name="Gender" Relationship="IntensFitModel.FK_User_Gender" FromRole="User" ToRole="Gender" />
+    <NavigationProperty Name="User1" Relationship="IntensFitModel.FK_User_User" FromRole="User" ToRole="User1" />
+    <NavigationProperty Name="User2" Relationship="IntensFitModel.FK_User_User" FromRole="User1" ToRole="User" />
+    <NavigationProperty Name="UserPhotoes" Relationship="IntensFitModel.FK_UserPhoto_User" FromRole="User" ToRole="UserPhoto" />
+  </EntityType>
+  <EntityType Name="UserPhoto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="photo" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="User" Relationship="IntensFitModel.FK_UserPhoto_User" FromRole="UserPhoto" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="application" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="logged" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="level" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="userName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="serverName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="port" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="https" Type="Boolean" />
+    <Property Name="serverAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="remoteAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="logger" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="callsite" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="exception" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="NLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MachineName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SiteName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Logged" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Level" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Logger" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Properties" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ServerName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Port" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="Https" Type="Boolean" />
+    <Property Name="ServerAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="RemoteAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Callsite" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Exception" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TestTable">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="dt" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="val" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vw_TEMP_groups">
+    <Key>
+      <PropertyRef Name="groupId" />
+      <PropertyRef Name="groupName" />
+    </Key>
+    <Property Name="groupId" Type="Int32" Nullable="false" />
+    <Property Name="groupName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="participantId" Type="Int32" />
+    <Property Name="isAdmin" Type="Boolean" />
+    <Property Name="userId" Type="Int32" />
+    <Property Name="firstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="cellphone" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vw_User">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="createdOn" />
+      <PropertyRef Name="createdBy" />
+      <PropertyRef Name="modifiedOn" />
+      <PropertyRef Name="modifiedBy" />
+      <PropertyRef Name="cellphone" />
+      <PropertyRef Name="genderId" />
+      <PropertyRef Name="firstName" />
+      <PropertyRef Name="fatherName" />
+      <PropertyRef Name="lastName" />
+      <PropertyRef Name="birthday" />
+      <PropertyRef Name="isOnline" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="createdOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="createdBy" Type="Int32" Nullable="false" />
+    <Property Name="modifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modifiedBy" Type="Int32" Nullable="false" />
+    <Property Name="cellphone" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="false" />
+    <Property Name="genderId" Type="Byte" Nullable="false" />
+    <Property Name="firstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="fatherName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="lastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="birthday" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="skype" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="isOnline" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vw_UserPhoto">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="userId" />
+      <PropertyRef Name="photo" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="photo" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="database_firewall_rules">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="start_ip_address" />
+      <PropertyRef Name="end_ip_address" />
+      <PropertyRef Name="create_date" />
+      <PropertyRef Name="modify_date" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="start_ip_address" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="end_ip_address" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <Association Name="FK_Message_ApprovalState">
+    <End Type="IntensFitModel.ApprovalState" Role="ApprovalState" Multiplicity="0..1" />
+    <End Type="IntensFitModel.Message" Role="Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ApprovalState">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="approvalStateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Group_Background">
+    <End Type="IntensFitModel.Background" Role="Background" Multiplicity="0..1" />
+    <End Type="IntensFitModel.Group" Role="Group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Background">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Group">
+        <PropertyRef Name="backgroundId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Content_ContentType">
+    <End Type="IntensFitModel.ContentType" Role="ContentType" Multiplicity="1" />
+    <End Type="IntensFitModel.Content" Role="Content" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ContentType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Content">
+        <PropertyRef Name="typeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Content_Message">
+    <End Type="IntensFitModel.Message" Role="Message" Multiplicity="1" />
+    <End Type="IntensFitModel.Content" Role="Content" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Message">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Content">
+        <PropertyRef Name="messageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Group_User">
+    <End Type="IntensFitModel.User" Role="User" Multiplicity="1" />
+    <End Type="IntensFitModel.Group" Role="Group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Group">
+        <PropertyRef Name="createdById" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GroupUser_Group">
+    <End Type="IntensFitModel.Group" Role="Group" Multiplicity="1" />
+    <End Type="IntensFitModel.GroupUser" Role="GroupUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="GroupUser">
+        <PropertyRef Name="groupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GroupUser_User">
+    <End Type="IntensFitModel.User" Role="User" Multiplicity="1" />
+    <End Type="IntensFitModel.GroupUser" Role="GroupUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="GroupUser">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GroupUser_User_addedById">
+    <End Type="IntensFitModel.User" Role="User" Multiplicity="1" />
+    <End Type="IntensFitModel.GroupUser" Role="GroupUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="GroupUser">
+        <PropertyRef Name="addedById" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_GroupUser">
+    <End Type="IntensFitModel.GroupUser" Role="GroupUser" Multiplicity="1" />
+    <End Type="IntensFitModel.Message" Role="Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GroupUser">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="groupUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_GroupUser_approvalStateById">
+    <End Type="IntensFitModel.GroupUser" Role="GroupUser" Multiplicity="0..1" />
+    <End Type="IntensFitModel.Message" Role="Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GroupUser">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="approvalStateById" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_MessageType">
+    <End Type="IntensFitModel.MessageType" Role="MessageType" Multiplicity="1" />
+    <End Type="IntensFitModel.Message" Role="Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MessageType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="typeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_AnswerListItem">
+    <End Type="IntensFitModel.AnswerListItem" Role="AnswerListItem" Multiplicity="0..1" />
+    <End Type="IntensFitModel.Answer" Role="Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerListItem">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="answerListItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_Client">
+    <End Type="IntensFitModel.Client" Role="Client" Multiplicity="1" />
+    <End Type="IntensFitModel.Answer" Role="Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="clientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_Question">
+    <End Type="IntensFitModel.Question" Role="Question" Multiplicity="1" />
+    <End Type="IntensFitModel.Answer" Role="Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="questionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AnswerList_User">
+    <End Type="IntensFitModel.User" Role="User" Multiplicity="1" />
+    <End Type="IntensFitModel.AnswerList" Role="AnswerList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="AnswerList">
+        <PropertyRef Name="createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AnswerList_User_modifiedBy">
+    <End Type="IntensFitModel.User" Role="User" Multiplicity="1" />
+    <End Type="IntensFitModel.AnswerList" Role="AnswerList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="AnswerList">
+        <PropertyRef Name="modifiedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AnswerListItem_AnswerList">
+    <End Type="IntensFitModel.AnswerList" Role="AnswerList" Multiplicity="1" />
+    <End Type="IntensFitModel.AnswerListItem" Role="AnswerListItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerList">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="AnswerListItem">
+        <PropertyRef Name="answerListId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_AnswerList">
+    <End Type="IntensFitModel.AnswerList" Role="AnswerList" Multiplicity="0..1" />
+    <End Type="IntensFitModel.Question" Role="Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerList">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="answerListId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AnswerListItem_User">
+    <End Type="IntensFitModel.User" Role="User" Multiplicity="1" />
+    <End Type="IntensFitModel.AnswerListItem" Role="AnswerListItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="AnswerListItem">
+        <PropertyRef Name="createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AnswerListItem_User_modifiedBy">
+    <End Type="IntensFitModel.User" Role="User" Multiplicity="1" />
+    <End Type="IntensFitModel.AnswerListItem" Role="AnswerListItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="AnswerListItem">
+        <PropertyRef Name="modifiedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_ClientType">
+    <End Type="IntensFitModel.ClientType" Role="ClientType" Multiplicity="1" />
+    <End Type="IntensFitModel.Client" Role="Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="typeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_Country">
+    <End Type="IntensFitModel.Country" Role="Country" Multiplicity="1" />
+    <End Type="IntensFitModel.Client" Role="Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="countryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_EmploymentType">
+    <End Type="IntensFitModel.EmploymentType" Role="EmploymentType" Multiplicity="1" />
+    <End Type="IntensFitModel.Client" Role="Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmploymentType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="employmentTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_TimeZone">
+    <End Type="IntensFitModel.TimeZone" Role="TimeZone" Multiplicity="1" />
+    <End Type="IntensFitModel.Client" Role="Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TimeZone">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="timeZoneId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_User">
+    <End Type="IntensFitModel.User" Role="User" Multiplicity="1" />
+    <End Type="IntensFitModel.Client" Role="Client" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_User_createdBy">
+    <End Type="IntensFitModel.User" Role="User" Multiplicity="1" />
+    <End Type="IntensFitModel.Client" Role="Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_User_modifiedBy">
+    <End Type="IntensFitModel.User" Role="User" Multiplicity="1" />
+    <End Type="IntensFitModel.Client" Role="Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="modifiedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Document_Client">
+    <End Type="IntensFitModel.Client" Role="Client" Multiplicity="1" />
+    <End Type="IntensFitModel.Document" Role="Document" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Document">
+        <PropertyRef Name="clientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Document_DocumentType">
+    <End Type="IntensFitModel.DocumentType" Role="DocumentType" Multiplicity="1" />
+    <End Type="IntensFitModel.Document" Role="Document" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DocumentType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Document">
+        <PropertyRef Name="typeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Document_User_createdBy">
+    <End Type="IntensFitModel.User" Role="User" Multiplicity="1" />
+    <End Type="IntensFitModel.Document" Role="Document" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Document">
+        <PropertyRef Name="createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Document_User_modifiedBy">
+    <End Type="IntensFitModel.User" Role="User" Multiplicity="1" />
+    <End Type="IntensFitModel.Document" Role="Document" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Document">
+        <PropertyRef Name="modifiedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_User">
+    <End Type="IntensFitModel.User" Role="User" Multiplicity="1" />
+    <End Type="IntensFitModel.Question" Role="Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_User_modifiedBy">
+    <End Type="IntensFitModel.User" Role="User" Multiplicity="1" />
+    <End Type="IntensFitModel.Question" Role="Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="modifiedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Coach_CoachType">
+    <End Type="IntensFitModel.CoachType" Role="CoachType" Multiplicity="1" />
+    <End Type="IntensFitModel.Coach" Role="Coach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CoachType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Coach">
+        <PropertyRef Name="typeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Coach_User">
+    <End Type="IntensFitModel.User" Role="User" Multiplicity="1" />
+    <End Type="IntensFitModel.Coach" Role="Coach" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Coach">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Coach_User_createdBy">
+    <End Type="IntensFitModel.User" Role="User" Multiplicity="1" />
+    <End Type="IntensFitModel.Coach" Role="Coach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Coach">
+        <PropertyRef Name="createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Coach_User_modifiedBy">
+    <End Type="IntensFitModel.User" Role="User" Multiplicity="1" />
+    <End Type="IntensFitModel.Coach" Role="Coach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Coach">
+        <PropertyRef Name="modifiedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Gender">
+    <End Type="IntensFitModel.Gender" Role="Gender" Multiplicity="1" />
+    <End Type="IntensFitModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="genderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_User">
+    <End Type="IntensFitModel.User" Role="User" Multiplicity="1" />
+    <End Type="IntensFitModel.User" Role="User1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="User1">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserPhoto_User">
+    <End Type="IntensFitModel.User" Role="User" Multiplicity="1" />
+    <End Type="IntensFitModel.UserPhoto" Role="UserPhoto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="UserPhoto">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="proc_TestTable_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="DateTime" Name="dt" Nullable="false" Precision="23" />
+    <Property Type="String" Name="val" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

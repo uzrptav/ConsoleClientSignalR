@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d16e56c1aabf4fe8b834396e4820083d" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="IntensFitModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="IntensFitModel.ApprovalState" Width="1.5" PointX="13.5" PointY="17.5" />
+        <EntityTypeShape EntityType="IntensFitModel.Background" Width="1.5" PointX="9" PointY="5.75" />
+        <EntityTypeShape EntityType="IntensFitModel.Content" Width="1.5" PointX="18" PointY="12.75" />
+        <EntityTypeShape EntityType="IntensFitModel.ContentType" Width="1.5" PointX="15.75" PointY="8.875" />
+        <EntityTypeShape EntityType="IntensFitModel.Group" Width="1.5" PointX="11.25" PointY="13.375" />
+        <EntityTypeShape EntityType="IntensFitModel.GroupUser" Width="1.5" PointX="13.5" PointY="13" />
+        <EntityTypeShape EntityType="IntensFitModel.Message" Width="1.5" PointX="15.75" PointY="11.875" />
+        <EntityTypeShape EntityType="IntensFitModel.MessageType" Width="1.5" PointX="13.5" PointY="5.125" />
+        <EntityTypeShape EntityType="IntensFitModel.Answer" Width="1.5" PointX="15.75" PointY="16.25" />
+        <EntityTypeShape EntityType="IntensFitModel.AnswerList" Width="1.5" PointX="8.25" PointY="28.75" />
+        <EntityTypeShape EntityType="IntensFitModel.AnswerListItem" Width="1.5" PointX="13.5" PointY="20.75" />
+        <EntityTypeShape EntityType="IntensFitModel.Client" Width="1.5" PointX="8.25" PointY="11.375" />
+        <EntityTypeShape EntityType="IntensFitModel.ClientType" Width="1.5" PointX="6" PointY="7.875" />
+        <EntityTypeShape EntityType="IntensFitModel.Document" Width="1.5" PointX="13.5" PointY="8" />
+        <EntityTypeShape EntityType="IntensFitModel.DocumentType" Width="1.5" PointX="11.25" PointY="5.875" />
+        <EntityTypeShape EntityType="IntensFitModel.EmploymentType" Width="1.5" PointX="6" PointY="19.5" />
+        <EntityTypeShape EntityType="IntensFitModel.Question" Width="1.5" PointX="10.5" PointY="19.75" />
+        <EntityTypeShape EntityType="IntensFitModel.Coach" Width="1.5" PointX="11.25" PointY="9.25" />
+        <EntityTypeShape EntityType="IntensFitModel.CoachType" Width="1.5" PointX="9" PointY="8.875" />
+        <EntityTypeShape EntityType="IntensFitModel.Country" Width="1.5" PointX="6" PointY="24.75" />
+        <EntityTypeShape EntityType="IntensFitModel.Gender" Width="1.5" PointX="3.75" PointY="13.875" />
+        <EntityTypeShape EntityType="IntensFitModel.TimeZone" Width="1.5" PointX="6" PointY="22" />
+        <EntityTypeShape EntityType="IntensFitModel.User" Width="1.5" PointX="6" PointY="10.875" />
+        <EntityTypeShape EntityType="IntensFitModel.UserPhoto" Width="1.5" PointX="8.25" PointY="26.25" />
+        <EntityTypeShape EntityType="IntensFitModel.Log" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="IntensFitModel.NLog" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="IntensFitModel.TestTable" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="IntensFitModel.vw_TEMP_groups" Width="1.5" PointX="2.75" PointY="5.75" />
+        <EntityTypeShape EntityType="IntensFitModel.vw_User" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="IntensFitModel.vw_UserPhoto" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="IntensFitModel.database_firewall_rules" Width="1.5" PointX="0.75" PointY="9.75" />
+        <AssociationConnector Association="IntensFitModel.FK_Message_ApprovalState" />
+        <AssociationConnector Association="IntensFitModel.FK_Group_Background" />
+        <AssociationConnector Association="IntensFitModel.FK_Content_ContentType" />
+        <AssociationConnector Association="IntensFitModel.FK_Content_Message" />
+        <AssociationConnector Association="IntensFitModel.FK_Group_User" />
+        <AssociationConnector Association="IntensFitModel.FK_GroupUser_Group" />
+        <AssociationConnector Association="IntensFitModel.FK_GroupUser_User" />
+        <AssociationConnector Association="IntensFitModel.FK_GroupUser_User_addedById" />
+        <AssociationConnector Association="IntensFitModel.FK_Message_GroupUser" />
+        <AssociationConnector Association="IntensFitModel.FK_Message_GroupUser_approvalStateById" />
+        <AssociationConnector Association="IntensFitModel.FK_Message_MessageType" />
+        <AssociationConnector Association="IntensFitModel.FK_Answer_AnswerListItem" />
+        <AssociationConnector Association="IntensFitModel.FK_Answer_Client" />
+        <AssociationConnector Association="IntensFitModel.FK_Answer_Question" />
+        <AssociationConnector Association="IntensFitModel.FK_AnswerList_User" />
+        <AssociationConnector Association="IntensFitModel.FK_AnswerList_User_modifiedBy" />
+        <AssociationConnector Association="IntensFitModel.FK_AnswerListItem_AnswerList" />
+        <AssociationConnector Association="IntensFitModel.FK_Question_AnswerList" />
+        <AssociationConnector Association="IntensFitModel.FK_AnswerListItem_User" />
+        <AssociationConnector Association="IntensFitModel.FK_AnswerListItem_User_modifiedBy" />
+        <AssociationConnector Association="IntensFitModel.FK_Client_ClientType" />
+        <AssociationConnector Association="IntensFitModel.FK_Client_Country" />
+        <AssociationConnector Association="IntensFitModel.FK_Client_EmploymentType" />
+        <AssociationConnector Association="IntensFitModel.FK_Client_TimeZone" />
+        <AssociationConnector Association="IntensFitModel.FK_Client_User" />
+        <AssociationConnector Association="IntensFitModel.FK_Client_User_createdBy" />
+        <AssociationConnector Association="IntensFitModel.FK_Client_User_modifiedBy" />
+        <AssociationConnector Association="IntensFitModel.FK_Document_Client" />
+        <AssociationConnector Association="IntensFitModel.FK_Document_DocumentType" />
+        <AssociationConnector Association="IntensFitModel.FK_Document_User_createdBy" />
+        <AssociationConnector Association="IntensFitModel.FK_Document_User_modifiedBy" />
+        <AssociationConnector Association="IntensFitModel.FK_Question_User" />
+        <AssociationConnector Association="IntensFitModel.FK_Question_User_modifiedBy" />
+        <AssociationConnector Association="IntensFitModel.FK_Coach_CoachType" />
+        <AssociationConnector Association="IntensFitModel.FK_Coach_User" />
+        <AssociationConnector Association="IntensFitModel.FK_Coach_User_createdBy" />
+        <AssociationConnector Association="IntensFitModel.FK_Coach_User_modifiedBy" />
+        <AssociationConnector Association="IntensFitModel.FK_User_Gender" />
+        <AssociationConnector Association="IntensFitModel.FK_User_User" />
+        <AssociationConnector Association="IntensFitModel.FK_UserPhoto_User" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

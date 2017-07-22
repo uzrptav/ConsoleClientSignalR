@@ -1,0 +1,1198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IntensFitModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ApprovalState">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="tinyint" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Background">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="background" Type="image" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Content">
+    <Key>
+      <PropertyRef Name="messageId" />
+    </Key>
+    <Property Name="messageId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="typeId" Type="smallint" Nullable="false" />
+    <Property Name="data" Type="varbinary(max)" Nullable="false" />
+    <Property Name="dataCompressed" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="ContentType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="createdOn" Type="datetime" Nullable="false" />
+    <Property Name="createdById" Type="int" Nullable="false" />
+    <Property Name="backgroundId" Type="smallint" />
+  </EntityType>
+  <EntityType Name="GroupUser">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="groupId" Type="int" Nullable="false" />
+    <Property Name="userId" Type="int" Nullable="false" />
+    <Property Name="isAdmin" Type="bit" Nullable="false" />
+    <Property Name="lastSeenOn" Type="datetime" />
+    <Property Name="addedOn" Type="datetime" Nullable="false" />
+    <Property Name="addedById" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="groupUserId" Type="int" Nullable="false" />
+    <Property Name="createdOn" Type="datetime" Nullable="false" />
+    <Property Name="modifiedOn" Type="datetime" />
+    <Property Name="typeId" Type="smallint" Nullable="false" />
+    <Property Name="approvalStateId" Type="tinyint" />
+    <Property Name="approvalStateOn" Type="datetime" />
+    <Property Name="approvalStateById" Type="int" />
+    <Property Name="text" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="MessageType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="questionaryId" Type="int" Nullable="false" />
+    <Property Name="questionId" Type="int" Nullable="false" />
+    <Property Name="answerListItemId" Type="int" />
+    <Property Name="text" Type="nvarchar" MaxLength="1000" />
+    <Property Name="clientId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AnswerList">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="createdOn" Type="datetime" Nullable="false" />
+    <Property Name="createdBy" Type="int" Nullable="false" />
+    <Property Name="modifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="modifiedBy" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AnswerListItem">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="createdOn" Type="datetime" Nullable="false" />
+    <Property Name="createdBy" Type="int" Nullable="false" />
+    <Property Name="modifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="modifiedBy" Type="int" Nullable="false" />
+    <Property Name="answerListId" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="createdOn" Type="datetime" Nullable="false" />
+    <Property Name="createdBy" Type="int" Nullable="false" />
+    <Property Name="modifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="modifiedBy" Type="int" Nullable="false" />
+    <Property Name="typeId" Type="tinyint" Nullable="false" />
+    <Property Name="timeZoneId" Type="smallint" Nullable="false" />
+    <Property Name="countryId" Type="smallint" Nullable="false" />
+    <Property Name="city" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="height" Type="tinyint" Nullable="false" />
+    <Property Name="weight" Type="tinyint" Nullable="false" />
+    <Property Name="artPresSystolic" Type="tinyint" Nullable="false" />
+    <Property Name="artPresDiastolic" Type="tinyint" Nullable="false" />
+    <Property Name="bloodGroup" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="rhFactor" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="wakeUpTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="sleepTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="employmentTypeId" Type="tinyint" Nullable="false" />
+    <Property Name="employmentFrom" Type="time" Precision="7" />
+    <Property Name="employmentTill" Type="time" Precision="7" />
+  </EntityType>
+  <EntityType Name="ClientType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Document">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="createdOn" Type="datetime" Nullable="false" />
+    <Property Name="createdBy" Type="int" Nullable="false" />
+    <Property Name="modifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="modifiedBy" Type="int" Nullable="false" />
+    <Property Name="clientId" Type="int" Nullable="false" />
+    <Property Name="typeId" Type="smallint" Nullable="false" />
+    <Property Name="content" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="DocumentType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmploymentType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="createdOn" Type="datetime" Nullable="false" />
+    <Property Name="createdBy" Type="int" Nullable="false" />
+    <Property Name="modifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="modifiedBy" Type="int" Nullable="false" />
+    <Property Name="orderId" Type="int" Nullable="false" />
+    <Property Name="text" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="answerListId" Type="int" />
+  </EntityType>
+  <EntityType Name="Coach">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="createdOn" Type="datetime" Nullable="false" />
+    <Property Name="createdBy" Type="int" Nullable="false" />
+    <Property Name="modifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="modifiedBy" Type="int" Nullable="false" />
+    <Property Name="typeId" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CoachType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'IntensFit.dbo.TestTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TestTable">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="dt" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dt" Type="datetime" Nullable="false" />
+    <Property Name="val" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="TimeZone">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="value" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="createdOn" Type="datetime" Nullable="false" />
+    <Property Name="createdById" Type="int" Nullable="false" />
+    <Property Name="modifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="modifiedById" Type="int" Nullable="false" />
+    <Property Name="cellphone" Type="char" MaxLength="12" Nullable="false" />
+    <Property Name="genderId" Type="tinyint" Nullable="false" />
+    <Property Name="firstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="fatherName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="lastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="birthday" Type="date" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="255" />
+    <Property Name="skype" Type="varchar" MaxLength="255" />
+    <Property Name="isOnline" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserPhoto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="userId" Type="int" Nullable="false" />
+    <Property Name="photo" Type="image" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="application" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="logged" Type="datetime" Nullable="false" />
+    <Property Name="level" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="message" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="userName" Type="nvarchar" MaxLength="250" />
+    <Property Name="serverName" Type="nvarchar(max)" />
+    <Property Name="port" Type="nvarchar(max)" />
+    <Property Name="url" Type="nvarchar(max)" />
+    <Property Name="https" Type="bit" />
+    <Property Name="serverAddress" Type="nvarchar" MaxLength="100" />
+    <Property Name="remoteAddress" Type="nvarchar" MaxLength="100" />
+    <Property Name="logger" Type="nvarchar" MaxLength="250" />
+    <Property Name="callsite" Type="nvarchar(max)" />
+    <Property Name="exception" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="NLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MachineName" Type="nvarchar" MaxLength="200" />
+    <Property Name="SiteName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Logged" Type="datetime" Nullable="false" />
+    <Property Name="Level" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Logger" Type="nvarchar" MaxLength="300" />
+    <Property Name="Properties" Type="nvarchar(max)" />
+    <Property Name="ServerName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Port" Type="nvarchar" MaxLength="100" />
+    <Property Name="Url" Type="nvarchar" MaxLength="2000" />
+    <Property Name="Https" Type="bit" />
+    <Property Name="ServerAddress" Type="nvarchar" MaxLength="100" />
+    <Property Name="RemoteAddress" Type="nvarchar" MaxLength="100" />
+    <Property Name="Callsite" Type="nvarchar" MaxLength="300" />
+    <Property Name="Exception" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'IntensFit.dbo.vw_TEMP_groups' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_TEMP_groups">
+    <Key>
+      <PropertyRef Name="groupId" />
+      <PropertyRef Name="groupName" />
+    </Key>
+    <Property Name="groupId" Type="int" Nullable="false" />
+    <Property Name="groupName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="participantId" Type="int" />
+    <Property Name="isAdmin" Type="bit" />
+    <Property Name="userId" Type="int" />
+    <Property Name="firstName" Type="nvarchar" MaxLength="100" />
+    <Property Name="cellphone" Type="char" MaxLength="12" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'IntensFit.dbo.vw_User' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_User">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="createdOn" />
+      <PropertyRef Name="createdBy" />
+      <PropertyRef Name="modifiedOn" />
+      <PropertyRef Name="modifiedBy" />
+      <PropertyRef Name="cellphone" />
+      <PropertyRef Name="genderId" />
+      <PropertyRef Name="firstName" />
+      <PropertyRef Name="fatherName" />
+      <PropertyRef Name="lastName" />
+      <PropertyRef Name="birthday" />
+      <PropertyRef Name="isOnline" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="createdOn" Type="datetime" Nullable="false" />
+    <Property Name="createdBy" Type="int" Nullable="false" />
+    <Property Name="modifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="modifiedBy" Type="int" Nullable="false" />
+    <Property Name="cellphone" Type="char" MaxLength="12" Nullable="false" />
+    <Property Name="genderId" Type="tinyint" Nullable="false" />
+    <Property Name="firstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="fatherName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="lastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="birthday" Type="date" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="255" />
+    <Property Name="skype" Type="varchar" MaxLength="255" />
+    <Property Name="isOnline" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'IntensFit.dbo.vw_UserPhoto' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_UserPhoto">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="userId" />
+      <PropertyRef Name="photo" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="userId" Type="int" Nullable="false" />
+    <Property Name="photo" Type="image" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'IntensFit.sys.database_firewall_rules' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="database_firewall_rules">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="start_ip_address" />
+      <PropertyRef Name="end_ip_address" />
+      <PropertyRef Name="create_date" />
+      <PropertyRef Name="modify_date" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="start_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="end_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="create_date" Type="datetime" Nullable="false" />
+    <Property Name="modify_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Answer_AnswerListItem">
+    <End Role="AnswerListItem" Type="Self.AnswerListItem" Multiplicity="0..1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerListItem">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="answerListItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="clientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="questionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AnswerList_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="AnswerList" Type="Self.AnswerList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="AnswerList">
+        <PropertyRef Name="createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AnswerList_User_modifiedBy">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="AnswerList" Type="Self.AnswerList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="AnswerList">
+        <PropertyRef Name="modifiedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AnswerListItem_AnswerList">
+    <End Role="AnswerList" Type="Self.AnswerList" Multiplicity="1" />
+    <End Role="AnswerListItem" Type="Self.AnswerListItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerList">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="AnswerListItem">
+        <PropertyRef Name="answerListId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AnswerListItem_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="AnswerListItem" Type="Self.AnswerListItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="AnswerListItem">
+        <PropertyRef Name="createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AnswerListItem_User_modifiedBy">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="AnswerListItem" Type="Self.AnswerListItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="AnswerListItem">
+        <PropertyRef Name="modifiedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_ClientType">
+    <End Role="ClientType" Type="Self.ClientType" Multiplicity="1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="typeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="countryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_EmploymentType">
+    <End Role="EmploymentType" Type="Self.EmploymentType" Multiplicity="1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmploymentType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="employmentTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_TimeZone">
+    <End Role="TimeZone" Type="Self.TimeZone" Multiplicity="1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TimeZone">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="timeZoneId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_User_createdBy">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_User_modifiedBy">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="modifiedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Coach_CoachType">
+    <End Role="CoachType" Type="Self.CoachType" Multiplicity="1" />
+    <End Role="Coach" Type="Self.Coach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CoachType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Coach">
+        <PropertyRef Name="typeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Coach_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Coach" Type="Self.Coach" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Coach">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Coach_User_createdBy">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Coach" Type="Self.Coach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Coach">
+        <PropertyRef Name="createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Coach_User_modifiedBy">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Coach" Type="Self.Coach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Coach">
+        <PropertyRef Name="modifiedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Content_ContentType">
+    <End Role="ContentType" Type="Self.ContentType" Multiplicity="1" />
+    <End Role="Content" Type="Self.Content" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ContentType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Content">
+        <PropertyRef Name="typeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Content_Message">
+    <End Role="Message" Type="Self.Message" Multiplicity="1" />
+    <End Role="Content" Type="Self.Content" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Message">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Content">
+        <PropertyRef Name="messageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Document_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Document" Type="Self.Document" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Document">
+        <PropertyRef Name="clientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Document_DocumentType">
+    <End Role="DocumentType" Type="Self.DocumentType" Multiplicity="1" />
+    <End Role="Document" Type="Self.Document" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DocumentType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Document">
+        <PropertyRef Name="typeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Document_User_createdBy">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Document" Type="Self.Document" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Document">
+        <PropertyRef Name="createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Document_User_modifiedBy">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Document" Type="Self.Document" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Document">
+        <PropertyRef Name="modifiedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Group_Background">
+    <End Role="Background" Type="Self.Background" Multiplicity="0..1" />
+    <End Role="Group" Type="Self.Group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Background">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Group">
+        <PropertyRef Name="backgroundId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Group_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Group" Type="Self.Group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Group">
+        <PropertyRef Name="createdById" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GroupUser_Group">
+    <End Role="Group" Type="Self.Group" Multiplicity="1" />
+    <End Role="GroupUser" Type="Self.GroupUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="GroupUser">
+        <PropertyRef Name="groupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GroupUser_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="GroupUser" Type="Self.GroupUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="GroupUser">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GroupUser_User_addedById">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="GroupUser" Type="Self.GroupUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="GroupUser">
+        <PropertyRef Name="addedById" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_ApprovalState">
+    <End Role="ApprovalState" Type="Self.ApprovalState" Multiplicity="0..1" />
+    <End Role="Message" Type="Self.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ApprovalState">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="approvalStateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_GroupUser">
+    <End Role="GroupUser" Type="Self.GroupUser" Multiplicity="1" />
+    <End Role="Message" Type="Self.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GroupUser">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="groupUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_GroupUser_approvalStateById">
+    <End Role="GroupUser" Type="Self.GroupUser" Multiplicity="0..1" />
+    <End Role="Message" Type="Self.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GroupUser">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="approvalStateById" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_MessageType">
+    <End Role="MessageType" Type="Self.MessageType" Multiplicity="1" />
+    <End Role="Message" Type="Self.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MessageType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="typeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_AnswerList">
+    <End Role="AnswerList" Type="Self.AnswerList" Multiplicity="0..1" />
+    <End Role="Question" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnswerList">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="answerListId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Question" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_User_modifiedBy">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Question" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="modifiedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Gender">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="genderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="User1" Type="Self.User" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="User1">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserPhoto_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserPhoto" Type="Self.UserPhoto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="UserPhoto">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="proc_AddGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="chat">
+    <Parameter Name="i_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="i_createdById" Type="int" Mode="In" />
+    <Parameter Name="i_backgroundId" Type="smallint" Mode="In" />
+    <Parameter Name="o_chatId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="proc_AddMessage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="chat">
+    <Parameter Name="i_id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="i_groupUserId" Type="int" Mode="In" />
+    <Parameter Name="i_createdOn" Type="datetime" Mode="In" />
+    <Parameter Name="i_typeId" Type="smallint" Mode="In" />
+    <Parameter Name="i_approvalStateId" Type="tinyint" Mode="In" />
+    <Parameter Name="i_approvalStateOn" Type="datetime" Mode="In" />
+    <Parameter Name="i_approvalStateById" Type="int" Mode="In" />
+    <Parameter Name="i_text" Type="nvarchar" Mode="In" />
+    <Parameter Name="i_contentTypeId" Type="smallint" Mode="In" />
+    <Parameter Name="i_contentData" Type="varbinary(max)" Mode="In" />
+    <Parameter Name="i_contentDataCompressed" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="proc_GetUserGroups" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="chat">
+    <Parameter Name="i_userCellphone" Type="char" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="proc_TestTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="i_value" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="proc_AddLog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="log">
+    <Parameter Name="machineName" Type="nvarchar" Mode="In" />
+    <Parameter Name="siteName" Type="nvarchar" Mode="In" />
+    <Parameter Name="logged" Type="datetime" Mode="In" />
+    <Parameter Name="level" Type="varchar" Mode="In" />
+    <Parameter Name="userName" Type="nvarchar" Mode="In" />
+    <Parameter Name="message" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="logger" Type="nvarchar" Mode="In" />
+    <Parameter Name="properties" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="serverName" Type="nvarchar" Mode="In" />
+    <Parameter Name="port" Type="nvarchar" Mode="In" />
+    <Parameter Name="url" Type="nvarchar" Mode="In" />
+    <Parameter Name="https" Type="bit" Mode="In" />
+    <Parameter Name="serverAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="remoteAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="callSite" Type="nvarchar" Mode="In" />
+    <Parameter Name="exception" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <EntityContainer Name="IntensFitModelStoreContainer">
+    <EntitySet Name="ApprovalState" EntityType="Self.ApprovalState" Schema="chat" store:Type="Tables" />
+    <EntitySet Name="Background" EntityType="Self.Background" Schema="chat" store:Type="Tables" />
+    <EntitySet Name="Content" EntityType="Self.Content" Schema="chat" store:Type="Tables" />
+    <EntitySet Name="ContentType" EntityType="Self.ContentType" Schema="chat" store:Type="Tables" />
+    <EntitySet Name="Group" EntityType="Self.Group" Schema="chat" store:Type="Tables" />
+    <EntitySet Name="GroupUser" EntityType="Self.GroupUser" Schema="chat" store:Type="Tables" />
+    <EntitySet Name="Message" EntityType="Self.Message" Schema="chat" store:Type="Tables" />
+    <EntitySet Name="MessageType" EntityType="Self.MessageType" Schema="chat" store:Type="Tables" />
+    <EntitySet Name="Answer" EntityType="Self.Answer" Schema="client" store:Type="Tables" />
+    <EntitySet Name="AnswerList" EntityType="Self.AnswerList" Schema="client" store:Type="Tables" />
+    <EntitySet Name="AnswerListItem" EntityType="Self.AnswerListItem" Schema="client" store:Type="Tables" />
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="client" store:Type="Tables" />
+    <EntitySet Name="ClientType" EntityType="Self.ClientType" Schema="client" store:Type="Tables" />
+    <EntitySet Name="Document" EntityType="Self.Document" Schema="client" store:Type="Tables" />
+    <EntitySet Name="DocumentType" EntityType="Self.DocumentType" Schema="client" store:Type="Tables" />
+    <EntitySet Name="EmploymentType" EntityType="Self.EmploymentType" Schema="client" store:Type="Tables" />
+    <EntitySet Name="Question" EntityType="Self.Question" Schema="client" store:Type="Tables" />
+    <EntitySet Name="Coach" EntityType="Self.Coach" Schema="coach" store:Type="Tables" />
+    <EntitySet Name="CoachType" EntityType="Self.CoachType" Schema="coach" store:Type="Tables" />
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TimeZone" EntityType="Self.TimeZone" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserPhoto" EntityType="Self.UserPhoto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Log" EntityType="Self.Log" Schema="log" store:Type="Tables" />
+    <EntitySet Name="NLog" EntityType="Self.NLog" Schema="log" store:Type="Tables" />
+    <EntitySet Name="TestTable" EntityType="Self.TestTable" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TestTable].[id] AS [id], 
+    [TestTable].[dt] AS [dt], 
+    [TestTable].[val] AS [val]
+    FROM [dbo].[TestTable] AS [TestTable]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_TEMP_groups" EntityType="Self.vw_TEMP_groups" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_TEMP_groups].[groupId] AS [groupId], 
+    [vw_TEMP_groups].[groupName] AS [groupName], 
+    [vw_TEMP_groups].[participantId] AS [participantId], 
+    [vw_TEMP_groups].[isAdmin] AS [isAdmin], 
+    [vw_TEMP_groups].[userId] AS [userId], 
+    [vw_TEMP_groups].[firstName] AS [firstName], 
+    [vw_TEMP_groups].[cellphone] AS [cellphone]
+    FROM [dbo].[vw_TEMP_groups] AS [vw_TEMP_groups]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_User" EntityType="Self.vw_User" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_User].[id] AS [id], 
+    [vw_User].[createdOn] AS [createdOn], 
+    [vw_User].[createdBy] AS [createdBy], 
+    [vw_User].[modifiedOn] AS [modifiedOn], 
+    [vw_User].[modifiedBy] AS [modifiedBy], 
+    [vw_User].[cellphone] AS [cellphone], 
+    [vw_User].[genderId] AS [genderId], 
+    [vw_User].[firstName] AS [firstName], 
+    [vw_User].[fatherName] AS [fatherName], 
+    [vw_User].[lastName] AS [lastName], 
+    [vw_User].[birthday] AS [birthday], 
+    [vw_User].[email] AS [email], 
+    [vw_User].[skype] AS [skype], 
+    [vw_User].[isOnline] AS [isOnline]
+    FROM [dbo].[vw_User] AS [vw_User]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_UserPhoto" EntityType="Self.vw_UserPhoto" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_UserPhoto].[id] AS [id], 
+    [vw_UserPhoto].[userId] AS [userId], 
+    [vw_UserPhoto].[photo] AS [photo]
+    FROM [dbo].[vw_UserPhoto] AS [vw_UserPhoto]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" store:Type="Views" store:Schema="sys">
+      <DefiningQuery>SELECT 
+    [database_firewall_rules].[id] AS [id], 
+    [database_firewall_rules].[name] AS [name], 
+    [database_firewall_rules].[start_ip_address] AS [start_ip_address], 
+    [database_firewall_rules].[end_ip_address] AS [end_ip_address], 
+    [database_firewall_rules].[create_date] AS [create_date], 
+    [database_firewall_rules].[modify_date] AS [modify_date]
+    FROM [sys].[database_firewall_rules] AS [database_firewall_rules]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Answer_AnswerListItem" Association="Self.FK_Answer_AnswerListItem">
+      <End Role="AnswerListItem" EntitySet="AnswerListItem" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_Client" Association="Self.FK_Answer_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_Question" Association="Self.FK_Answer_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AnswerList_User" Association="Self.FK_AnswerList_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="AnswerList" EntitySet="AnswerList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AnswerList_User_modifiedBy" Association="Self.FK_AnswerList_User_modifiedBy">
+      <End Role="User" EntitySet="User" />
+      <End Role="AnswerList" EntitySet="AnswerList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AnswerListItem_AnswerList" Association="Self.FK_AnswerListItem_AnswerList">
+      <End Role="AnswerList" EntitySet="AnswerList" />
+      <End Role="AnswerListItem" EntitySet="AnswerListItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AnswerListItem_User" Association="Self.FK_AnswerListItem_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="AnswerListItem" EntitySet="AnswerListItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AnswerListItem_User_modifiedBy" Association="Self.FK_AnswerListItem_User_modifiedBy">
+      <End Role="User" EntitySet="User" />
+      <End Role="AnswerListItem" EntitySet="AnswerListItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_ClientType" Association="Self.FK_Client_ClientType">
+      <End Role="ClientType" EntitySet="ClientType" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_Country" Association="Self.FK_Client_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_EmploymentType" Association="Self.FK_Client_EmploymentType">
+      <End Role="EmploymentType" EntitySet="EmploymentType" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_TimeZone" Association="Self.FK_Client_TimeZone">
+      <End Role="TimeZone" EntitySet="TimeZone" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_User" Association="Self.FK_Client_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_User_createdBy" Association="Self.FK_Client_User_createdBy">
+      <End Role="User" EntitySet="User" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_User_modifiedBy" Association="Self.FK_Client_User_modifiedBy">
+      <End Role="User" EntitySet="User" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Coach_CoachType" Association="Self.FK_Coach_CoachType">
+      <End Role="CoachType" EntitySet="CoachType" />
+      <End Role="Coach" EntitySet="Coach" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Coach_User" Association="Self.FK_Coach_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Coach" EntitySet="Coach" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Coach_User_createdBy" Association="Self.FK_Coach_User_createdBy">
+      <End Role="User" EntitySet="User" />
+      <End Role="Coach" EntitySet="Coach" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Coach_User_modifiedBy" Association="Self.FK_Coach_User_modifiedBy">
+      <End Role="User" EntitySet="User" />
+      <End Role="Coach" EntitySet="Coach" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Content_ContentType" Association="Self.FK_Content_ContentType">
+      <End Role="ContentType" EntitySet="ContentType" />
+      <End Role="Content" EntitySet="Content" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Content_Message" Association="Self.FK_Content_Message">
+      <End Role="Message" EntitySet="Message" />
+      <End Role="Content" EntitySet="Content" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Document_Client" Association="Self.FK_Document_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Document" EntitySet="Document" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Document_DocumentType" Association="Self.FK_Document_DocumentType">
+      <End Role="DocumentType" EntitySet="DocumentType" />
+      <End Role="Document" EntitySet="Document" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Document_User_createdBy" Association="Self.FK_Document_User_createdBy">
+      <End Role="User" EntitySet="User" />
+      <End Role="Document" EntitySet="Document" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Document_User_modifiedBy" Association="Self.FK_Document_User_modifiedBy">
+      <End Role="User" EntitySet="User" />
+      <End Role="Document" EntitySet="Document" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Group_Background" Association="Self.FK_Group_Background">
+      <End Role="Background" EntitySet="Background" />
+      <End Role="Group" EntitySet="Group" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Group_User" Association="Self.FK_Group_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Group" EntitySet="Group" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GroupUser_Group" Association="Self.FK_GroupUser_Group">
+      <End Role="Group" EntitySet="Group" />
+      <End Role="GroupUser" EntitySet="GroupUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GroupUser_User" Association="Self.FK_GroupUser_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="GroupUser" EntitySet="GroupUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GroupUser_User_addedById" Association="Self.FK_GroupUser_User_addedById">
+      <End Role="User" EntitySet="User" />
+      <End Role="GroupUser" EntitySet="GroupUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_ApprovalState" Association="Self.FK_Message_ApprovalState">
+      <End Role="ApprovalState" EntitySet="ApprovalState" />
+      <End Role="Message" EntitySet="Message" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_GroupUser" Association="Self.FK_Message_GroupUser">
+      <End Role="GroupUser" EntitySet="GroupUser" />
+      <End Role="Message" EntitySet="Message" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_GroupUser_approvalStateById" Association="Self.FK_Message_GroupUser_approvalStateById">
+      <End Role="GroupUser" EntitySet="GroupUser" />
+      <End Role="Message" EntitySet="Message" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_MessageType" Association="Self.FK_Message_MessageType">
+      <End Role="MessageType" EntitySet="MessageType" />
+      <End Role="Message" EntitySet="Message" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_AnswerList" Association="Self.FK_Question_AnswerList">
+      <End Role="AnswerList" EntitySet="AnswerList" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_User" Association="Self.FK_Question_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_User_modifiedBy" Association="Self.FK_Question_User_modifiedBy">
+      <End Role="User" EntitySet="User" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Gender" Association="Self.FK_User_Gender">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_User" Association="Self.FK_User_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="User1" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserPhoto_User" Association="Self.FK_UserPhoto_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserPhoto" EntitySet="UserPhoto" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

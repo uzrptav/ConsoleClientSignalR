@@ -1,0 +1,16 @@
+C:\Users\Serhii\Documents\Visual Studio 2015\Projects\ConsoleSignalR\ConsoleSignalR_001\bin\Debug\ConsoleSignalR_001.exe.config
+C:\Users\Serhii\Documents\Visual Studio 2015\Projects\ConsoleSignalR\ConsoleSignalR_001\bin\Debug\ConsoleSignalR_001.exe
+C:\Users\Serhii\Documents\Visual Studio 2015\Projects\ConsoleSignalR\ConsoleSignalR_001\bin\Debug\ConsoleSignalR_001.pdb
+C:\Users\Serhii\Documents\Visual Studio 2015\Projects\ConsoleSignalR\ConsoleSignalR_001\bin\Debug\EntityFramework.dll
+C:\Users\Serhii\Documents\Visual Studio 2015\Projects\ConsoleSignalR\ConsoleSignalR_001\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Serhii\Documents\Visual Studio 2015\Projects\ConsoleSignalR\ConsoleSignalR_001\bin\Debug\Microsoft.AspNet.SignalR.Client.dll
+C:\Users\Serhii\Documents\Visual Studio 2015\Projects\ConsoleSignalR\ConsoleSignalR_001\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Serhii\Documents\Visual Studio 2015\Projects\ConsoleSignalR\ConsoleSignalR_001\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\Serhii\Documents\Visual Studio 2015\Projects\ConsoleSignalR\ConsoleSignalR_001\bin\Debug\EntityFramework.xml
+C:\Users\Serhii\Documents\Visual Studio 2015\Projects\ConsoleSignalR\ConsoleSignalR_001\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Serhii\Documents\Visual Studio 2015\Projects\ConsoleSignalR\ConsoleSignalR_001\bin\Debug\Microsoft.AspNet.SignalR.Client.xml
+C:\Users\Serhii\Documents\Visual Studio 2015\Projects\ConsoleSignalR\ConsoleSignalR_001\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Serhii\Documents\Visual Studio 2015\Projects\ConsoleSignalR\ConsoleSignalR_001\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\Serhii\Documents\Visual Studio 2015\Projects\ConsoleSignalR\ConsoleSignalR_001\obj\Debug\ConsoleSignalR_001.exe
+C:\Users\Serhii\Documents\Visual Studio 2015\Projects\ConsoleSignalR\ConsoleSignalR_001\obj\Debug\ConsoleSignalR_001.pdb
+C:\Users\Serhii\Documents\Visual Studio 2015\Projects\ConsoleSignalR\ConsoleSignalR_001\obj\Debug\ConsoleSignalR.csprojResolveAssemblyReference.cache
